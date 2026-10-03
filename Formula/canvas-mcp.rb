@@ -3,11 +3,8 @@ class CanvasMcp < Formula
 
   desc "Local MCP server giving Claude access to the Canvas LMS REST API"
   homepage "https://github.com/brockcraft/canvas-mcp-for-claude"
-  # Pinned to the v1.0.1 commit until a v1.0.1 tag exists. After tagging, switch to:
-  #   url "https://github.com/brockcraft/canvas-mcp-for-claude/archive/refs/tags/v1.0.1.tar.gz"
-  url "https://github.com/brockcraft/canvas-mcp-for-claude/archive/9e3f90fc4851e8f8df4838bfeac466c60168cb49.tar.gz"
-  version "1.0.1"
-  sha256 "c4db4acbaf74fbcc789f42e6e0023966e552176694db6810ea6a410d93e0fd6d"
+  url "https://github.com/brockcraft/canvas-mcp-for-claude/archive/refs/tags/v1.0.1.tar.gz"
+  sha256 "a25c808ee13035f3197f9a17260e5fa1b1a2ea5aae3b92a673e6ae2e0ea05392"
   license "MIT"
 
   depends_on "rust" => :build # pydantic-core, rpds-py, cryptography
