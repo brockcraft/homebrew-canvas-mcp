@@ -7,8 +7,8 @@ class CanvasMcp < Formula
   sha256 "7d6d682684a729b0ead231efb988253c4ea7959a4cc4c74e717a8ddc9ce79b1b"
   license "MIT"
 
-  depends_on "rust" => :build # pydantic-core, rpds-py, cryptography
   depends_on "pkgconf" => :build
+  depends_on "rust" => :build # pydantic-core, rpds-py, cryptography
   depends_on "openssl@3"
   depends_on "python@3.13"
 
@@ -104,7 +104,7 @@ class CanvasMcp < Formula
     sha256 "694b793e84f766ba76a90ebdefc01d0a9a045dab0382bee70393da93712ad117"
   end
 
-  resource "pydantic_core" do
+  resource "pydantic-core" do
     url "https://files.pythonhosted.org/packages/af/f9/8a06bea35ef8daf588f707784c973a7046e0034c8d8cfb08828eeffb8b75/pydantic_core-2.46.5.tar.gz"
     sha256 "10416c15b8839ecc4ef4d0885da76da6fd0f67333a0eb8aff6d93c4b8f2910fc"
   end
@@ -149,7 +149,7 @@ class CanvasMcp < Formula
     sha256 "547274fa6b0a561ccf549cc9524b999a578e737d015d8709d021f9d0d13bea47"
   end
 
-  resource "typing_extensions" do
+  resource "typing-extensions" do
     url "https://files.pythonhosted.org/packages/f6/cc/6253133b5bb138fc3306cebfbda2c520f545d36b5be2c7255cc528bb45d6/typing_extensions-4.16.0.tar.gz"
     sha256 "dc983d19a509c94dba722ee6abd33940f7c05a89e243c47e907eb4db6f1a43e5"
   end
@@ -201,7 +201,7 @@ class CanvasMcp < Formula
     # The server speaks MCP over stdio; an initialize request must get a valid reply.
     init = '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05",' \
            '"capabilities":{},"clientInfo":{"name":"brew-test","version":"0"}}}'
-    output = pipe_output("#{bin}/canvas-mcp", "#{init}\n", 0)
+    output = pipe_output(bin/"canvas-mcp", "#{init}\n", 0)
     assert_match "canvas", output.downcase
     assert_path_exists pkgshare/"skill/canvas-api/SKILL.md"
   end
