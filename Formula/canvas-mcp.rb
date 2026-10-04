@@ -3,8 +3,8 @@ class CanvasMcp < Formula
 
   desc "Local MCP server giving Claude access to the Canvas LMS REST API"
   homepage "https://github.com/brockcraft/canvas-mcp-for-claude"
-  url "https://github.com/brockcraft/canvas-mcp-for-claude/archive/refs/tags/v1.0.1.tar.gz"
-  sha256 "a25c808ee13035f3197f9a17260e5fa1b1a2ea5aae3b92a673e6ae2e0ea05392"
+  url "https://github.com/brockcraft/canvas-mcp-for-claude/archive/refs/tags/v1.1.0.tar.gz"
+  sha256 "7d6d682684a729b0ead231efb988253c4ea7959a4cc4c74e717a8ddc9ce79b1b"
   license "MIT"
 
   depends_on "rust" => :build # pydantic-core, rpds-py, cryptography
