@@ -177,15 +177,20 @@ class CanvasMcp < Formula
 
   def caveats
     <<~EOS
-      1. Store your Canvas token (input is hidden; use your own Canvas host):
-           security add-generic-password -s canvas-api -a canvas.uw.edu -w
+      1. Find your Canvas host (the address you sign in to Canvas at, e.g. canvas.example.edu).
+         There is no default; the connector fails until you set it.
+
+      2. Store your Canvas token (input is hidden):
+           security add-generic-password -s canvas-api -a canvas.example.edu -w
          On Linux, put it in ~/.canvas/token and run: chmod 600 ~/.canvas/token
 
-      2. Add this to claude_desktop_config.json under "mcpServers"
-         (for a host other than canvas.uw.edu, also add "env": { "CANVAS_HOST": "..." }):
-           "canvas": { "command": "#{opt_bin}/canvas-mcp" }
+      3. Add this to claude_desktop_config.json under "mcpServers", using your host:
+           "canvas": {
+             "command": "#{opt_bin}/canvas-mcp",
+             "env": { "CANVAS_HOST": "canvas.example.edu" }
+           }
 
-      3. Upload the skill in Claude (Settings > Customize > Skills):
+      4. Upload the skill in Claude (Settings > Customize > Skills):
            #{opt_pkgshare}/skill/canvas-api/SKILL.md
 
       Then quit and reopen Claude.

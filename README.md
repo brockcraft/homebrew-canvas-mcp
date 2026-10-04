@@ -11,35 +11,25 @@ brew install canvas-mcp
 
 ## Set up
 
-**1. Create a Canvas access token.** In Canvas: Account → Settings → Approved Integrations → **+ New Access Token**. Set an expiration.
+**1. Find your Canvas host.** It's the address you sign in to Canvas at, without `https://` (for example `canvas.example.edu`). **There is no default; the connector won't work until you set it.**
 
-**2. Store it in macOS Keychain** (input is hidden). Use your own Canvas host in place of `canvas.uw.edu`:
+**2. Create a Canvas access token.** In Canvas: Account → Settings → Approved Integrations → **+ New Access Token**. Set an expiration.
+
+**3. Store the token in macOS Keychain** (input is hidden). Use your own host in place of `canvas.example.edu`:
 
 ```bash
-security add-generic-password -s canvas-api -a canvas.uw.edu -w
+security add-generic-password -s canvas-api -a canvas.example.edu -w
 ```
 
 On Linux, save the token to `~/.canvas/token` and run `chmod 600 ~/.canvas/token`.
 
-**3. Register the connector with Claude Desktop.** Find the full path to the installed command:
+**4. Register the connector with Claude Desktop.** Find the full path to the installed command:
 
 ```bash
 echo "$(brew --prefix)/bin/canvas-mcp"
 ```
 
-Claude Desktop doesn't use your shell `PATH`, so the config needs that full path. Open `~/Library/Application Support/Claude/claude_desktop_config.json` (or Settings → Developer → Edit Config) and add the entry below under `mcpServers`, keeping any servers already there. Apple Silicon is shown; on Intel Macs the path is `/usr/local/bin/canvas-mcp`.
-
-```json
-{
-  "mcpServers": {
-    "canvas": {
-      "command": "/opt/homebrew/bin/canvas-mcp"
-    }
-  }
-}
-```
-
-If your Canvas host isn't `canvas.uw.edu`, add the host:
+Claude Desktop doesn't use your shell `PATH`, so the config needs that full path. Open `~/Library/Application Support/Claude/claude_desktop_config.json` (or Settings → Developer → Edit Config) and add the entry below under `mcpServers`, keeping any servers already there. Replace `canvas.example.edu` with your host. Apple Silicon is shown; on Intel Macs the path is `/usr/local/bin/canvas-mcp`.
 
 ```json
 {
@@ -52,20 +42,22 @@ If your Canvas host isn't `canvas.uw.edu`, add the host:
 }
 ```
 
+If you leave out the host, every Canvas tool call fails with a message telling you to set it. You can also set `host = "canvas.example.edu"` in `~/.config/canvas-mcp/config.toml` instead of the `env` entry.
+
 The token is never put in this file; the connector reads it from Keychain.
 
-**4. Install the skill (recommended).** In Claude, open Settings → Customize → Skills, upload a skill, and choose:
+**5. Install the skill (recommended).** In Claude, open Settings → Customize → Skills, upload a skill, and choose:
 
 ```bash
 echo "$(brew --prefix canvas-mcp)/share/canvas-mcp/skill/canvas-api/SKILL.md"
 ```
 
-**5. Quit Claude (Cmd+Q) and reopen it.**
+**6. Quit Claude (Cmd+Q) and reopen it.**
 
 ## Claude Code
 
 ```bash
-claude mcp add canvas -- "$(brew --prefix)/bin/canvas-mcp"
+claude mcp add canvas -e CANVAS_HOST=canvas.example.edu -- "$(brew --prefix)/bin/canvas-mcp"
 ```
 
 ## Upgrade and uninstall
