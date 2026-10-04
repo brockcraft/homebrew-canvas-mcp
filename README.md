@@ -1,5 +1,7 @@
 # Homebrew tap for the Canvas connector
 
+Tested on Apple Silicon Macs. Intel Macs (no precompiled packages from Homebrew) and Linux are untested.
+
 Installs [canvas-mcp-for-claude](https://github.com/brockcraft/canvas-mcp-for-claude), a local MCP server that gives Claude access to the Canvas LMS REST API. Python dependencies live in a private virtual environment, so nothing touches your system Python.
 
 ## Install
@@ -21,8 +23,6 @@ That one command adds the tap and installs the formula. Homebrew 6 and later won
 ```bash
 security add-generic-password -s canvas-api -a canvas.example.edu -w
 ```
-
-On Linux, save the token to `~/.canvas/token` and run `chmod 600 ~/.canvas/token`.
 
 **4. Register the connector with Claude Desktop.** Find the full path to the installed command:
 

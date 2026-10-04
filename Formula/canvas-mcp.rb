@@ -182,7 +182,6 @@ class CanvasMcp < Formula
 
       2. Store your Canvas token (input is hidden):
            security add-generic-password -s canvas-api -a canvas.example.edu -w
-         On Linux, put it in ~/.canvas/token and run: chmod 600 ~/.canvas/token
 
       3. Add this to claude_desktop_config.json under "mcpServers", using your host:
            "canvas": {
