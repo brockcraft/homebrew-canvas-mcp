@@ -1,5 +1,7 @@
 # CLAUDE.md — homebrew-canvas-mcp
 
+**Status: archived (2026-10-03).** The connector now ships as a Claude Desktop extension (`.mcpb`) from the connector repo, which is easier for non-technical users. This tap is no longer maintained; the notes below are kept for reference.
+
 Homebrew tap for [canvas-mcp-for-claude](https://github.com/brockcraft/canvas-mcp-for-claude), the local MCP connector that lets Claude read and edit Canvas LMS courses. Public repo: https://github.com/brockcraft/homebrew-canvas-mcp (default branch `main`).
 
 ## Layout

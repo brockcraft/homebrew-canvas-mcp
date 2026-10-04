@@ -1,4 +1,8 @@
-# Homebrew tap for the Canvas connector
+# Homebrew tap for the Canvas connector (archived)
+
+> **This tap is archived and no longer maintained.** The Canvas connector is now installed as a Claude Desktop extension: download it, double-click it, and enter your Canvas host and token. No terminal or Homebrew needed. See the instructions at https://github.com/brockcraft/canvas-mcp-for-claude
+
+The rest of this page is kept for reference.
 
 Tested on Apple Silicon Macs. Intel Macs (no precompiled packages from Homebrew) and Linux are untested.
 
