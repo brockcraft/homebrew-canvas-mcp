@@ -5,9 +5,10 @@ Installs [canvas-mcp-for-claude](https://github.com/brockcraft/canvas-mcp-for-cl
 ## Install
 
 ```bash
-brew tap brockcraft/canvas-mcp
-brew install canvas-mcp
+brew install brockcraft/canvas-mcp/canvas-mcp
 ```
+
+That one command adds the tap and installs the formula. Homebrew 6 and later won't load formulae from third-party taps until you trust them; installing by the full name trusts only this one formula, not the whole tap. If you tap it first (`brew tap brockcraft/canvas-mcp`) and then see "Refusing to load formula from untrusted tap", run `brew trust --formula brockcraft/canvas-mcp/canvas-mcp`.
 
 ## Set up
 
